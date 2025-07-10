@@ -1,3 +1,5 @@
+import { redirectTo } from "./routes";
+
 //DOM References
 const loginBtn = document.getElementById("go-to-login");
 const registerBtn = document.getElementById("go-to-register");
@@ -15,8 +17,3 @@ registerBtn.addEventListener("click", () =>
 registerCtaBtn.addEventListener("click", () =>
   redirectTo("./src/views/register.html")
 );
-
-//Function to redirecto to another route
-function redirectTo(path) {
-  window.location.href = `${path}`;
-}
