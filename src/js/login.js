@@ -1,4 +1,6 @@
 import { redirectTo } from "./routes.js";
+import { sleep } from "./sleep.js";
+import { Alert } from "./alerts.js";
 
 //DOM References
 const loginForm = document.getElementById("login-form");
@@ -6,7 +8,7 @@ const usernameInput = document.getElementById("login-username");
 const passwordInput = document.getElementById("login-password");
 
 //API URL
-const API_URL = ''
+const API_URL = "http://localhost:3000";
 
 //Events
 loginForm.addEventListener("submit", async (event) => {
@@ -16,5 +18,20 @@ loginForm.addEventListener("submit", async (event) => {
   const username = usernameInput.value.trim().toLowerCase();
   const password = passwordInput.value;
 
-  let response = await fetch()
+  //Get user info
+  let response = await fetch(`${API_URL}/users?username=${username}`);
+  const data = await response.json();
+  const userData = data[0];
+
+  //If the information is correct, user will login
+  if (!userData) {
+    Alert.error("Este usuario no se encuentra registrado");
+  } else if (userData.password != password) {
+    Alert.error("Contraseña incorrecta");
+  } else {
+    localStorage.setItem("currentUser", JSON.stringify(userData));
+    Alert.success("Has ingresado correctamente");
+    await sleep(2000);
+    redirectTo("../views/dashboard.html");
+  }
 });
