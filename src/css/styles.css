@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   background-color: #f8f9fa;
   color: #333;
 }
@@ -18,14 +18,30 @@ body {
   display: none !important;
 } */
 
-input, button {
+input,
+button {
   font-family: inherit;
 }
 
 /* Animaciones */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn2 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* =====================================================
@@ -37,6 +53,7 @@ input, button {
   flex-direction: column;
   min-height: 100vh;
   background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+  animation: fadeIn2 0.6s ease-out;
 }
 
 .landing-header {
@@ -308,7 +325,7 @@ input, button {
   padding: 2rem;
   background: linear-gradient(to right, #fdfbfb, #ebedee);
   min-height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .dashboard-header {
