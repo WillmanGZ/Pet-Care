@@ -1,3 +1,4 @@
+import { notFoundSetup } from "./404";
 import { homeSetup } from "./home";
 import { loginSetup } from "./login";
 import { registerSetup } from "./register";
@@ -21,7 +22,7 @@ const routes = {
   },
   "/notFound": {
     path: "../../src/views/404.html",
-    setup: null,
+    setup: notFoundSetup,
   },
 };
 
