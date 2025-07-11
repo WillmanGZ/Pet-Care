@@ -1,5 +1,5 @@
 import { dashboardGuard } from "./guards";
-import { redirectTo } from "./router";
+import { logout } from "./login";
 
 export function dashboardSetup() {
   dashboardGuard();
@@ -20,7 +20,6 @@ export function dashboardSetup() {
   });
 
   logOutBtn.addEventListener("click", () => {
-    localStorage.removeItem("currentUser");
-    redirectTo("/");
+    logout();
   });
 }

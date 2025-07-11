@@ -51,3 +51,12 @@ export function loginSetup() {
     redirectTo("/register");
   });
 }
+
+export function logout() {
+  localStorage.removeItem("currentUser");
+  redirectTo("/");
+}
+
+export function isLogged(){
+  return localStorage.getItem("currentUser") != undefined;
+}
