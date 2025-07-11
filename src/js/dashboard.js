@@ -1,12 +1,12 @@
 import { Alert } from "./alerts";
-import { dashboardGuard } from "./guards";
+import { dashboardGuard, isAdmin } from "./guards";
 import { logout } from "./login";
 import { redirectTo } from "./router";
+const API_URL = "http://localhost:3000";
 
 export function dashboardSetup() {
   dashboardGuard();
-
-  const API_URL = "http://localhost:3000";
+  renderPets();
 
   //Take DOM References
   const newPetModal = document.getElementById("pet-form-modal");
@@ -73,7 +73,7 @@ export function dashboardSetup() {
         race: petRace,
         details: petDetails,
         temperament: petTemperament,
-        image: petImage,
+        image: petImage || "../../public/images/default-dog.webp",
         userId: userId,
       };
 
@@ -87,6 +87,7 @@ export function dashboardSetup() {
 
       if (request.ok) {
         Alert.success("La mascota ha sido añadida con exito!");
+        renderPets();
       } else {
         Alert.error(`Error: ${request.status}, vuelva a intentarlo mas tarde`);
       }
@@ -100,6 +101,56 @@ export function dashboardSetup() {
     petDetailsInput.value = "";
     petTemperamentInput.value = "";
     petImageInput.value = "";
+  });
+}
+
+async function renderPets() {
+  const petContainer = document.getElementById("pets-container");
+
+  //Clear all info before start rendering
+  petContainer.innerHTML = "";
+
+  const request = await fetch(`${API_URL}/pets`);
+  const data = await request.json();
+
+  if (!data || data.length === 0) {
+    Alert.warning("No hay mascotas para mostrar.");
+    return;
+  }
+
+  let pets;
+
+  if (!isAdmin()) {
+    const userInfo = JSON.parse(localStorage.getItem("currentUser"));
+    // Asigna el valor filtrado a la variable 'pets'
+    pets = data.filter((pet) => pet.userId == userInfo.id);
+    if (pets.length === 0) {
+      Alert.warning("No tienes mascotas registradas.");
+      return;
+    }
+  } else {
+    // Si es admin, asigna todos los datos
+    pets = data;
+  }
+
+  // Itera sobre el array de mascotas y agrega cada tarjeta
+  pets.forEach((pet) => {
+    petContainer.innerHTML += `
+      <div class="pet-card">
+        <img
+          src="${pet.image}"
+          alt="Imagen de ${pet.name}"
+          title="${pet.name}"
+        />
+        <h3>${pet.name}</h3>
+        <p><strong>Raza:</strong> ${pet.race}</p>
+        <p><strong>Edad:</strong> ${pet.age} años</p>
+
+        <div class="card-buttons">
+          <button class="edit-btn">Editar</button>
+          <button class="delete-btn">Eliminar</button>
+        </div>
+      </div>`;
   });
 }
 

@@ -18,3 +18,9 @@ export function loginGuard() {
     redirectTo("/dashboard");
   }
 }
+
+export function isAdmin() {
+  const userInfo = JSON.parse(localStorage.getItem("currentUser"));
+
+  return userInfo.roleId == "1";
+}

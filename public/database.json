@@ -19,9 +19,32 @@
       "address": "Calle 80 # 43-11",
       "email": "admin@riwi.io",
       "password": "1234",
-      "roleId": "2"
+      "roleId": "1"
     }
   ],
-  "pets": [],
+  "pets": [
+    {
+      "id": "34ce",
+      "name": "Rocky",
+      "weight": "12",
+      "age": "2",
+      "race": "Gotico",
+      "details": "Tremenda coya",
+      "temperament": "maluco",
+      "image": "../../public/images/default-dog.webp",
+      "userId": "82f9"
+    },
+    {
+      "id": "9a31",
+      "name": "Rosa",
+      "weight": "22",
+      "age": "4",
+      "race": "Perra",
+      "details": "Tremenda coya 2.0",
+      "temperament": "SI",
+      "image": "https://cdn.unotv.com/images/2025/02/perrita-maltes-celebra-antes-de-comer-mandarina-jpg-131529.jpg",
+      "userId": "82f9"
+    }
+  ],
   "stays": []
 }
