@@ -2,11 +2,16 @@ import { Alert } from "./alerts";
 import { dashboardGuard, isAdmin } from "./guards";
 import { logout } from "./login";
 import { redirectTo } from "./router";
+import Swal from "sweetalert2";
+
 const API_URL = "http://localhost:3000";
 
 export function dashboardSetup() {
   dashboardGuard();
   renderPets();
+
+  //Make functions global
+  window.deletePet = deletePet;
 
   //Take DOM References
   const newPetModal = document.getElementById("pet-form-modal");
@@ -147,11 +152,35 @@ async function renderPets() {
         <p><strong>Edad:</strong> ${pet.age} años</p>
 
         <div class="card-buttons">
-          <button class="edit-btn">Editar</button>
-          <button class="delete-btn">Eliminar</button>
+          <button class="edit-btn")>Editar</button>
+          <button class="delete-btn" onclick="deletePet('${pet.id}')">Eliminar</button>
         </div>
       </div>`;
   });
+}
+
+async function deletePet(petId) {
+  const result = await Swal.fire({
+    icon: "question",
+    title: "¿Estás seguro?",
+    showCancelButton: true,
+    confirmButtonText: "Sí, eliminar",
+    cancelButtonText: "Cancelar",
+    confirmButtonColor: "#dc3545",
+  });
+
+  if (result.isConfirmed) {
+    let request = await fetch(`${API_URL}/pets/${petId}`, {
+      method: "DELETE",
+    });
+
+    if (request.ok) {
+      Alert.success("Mascota eliminada con éxito!");
+      renderPets();
+    } else {
+      Alert.error(`Error: ${request.status}, por favor intenta más tarde.`);
+    }
+  }
 }
 
 function arePetDetailsValid(

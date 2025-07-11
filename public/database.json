@@ -33,17 +33,6 @@
       "temperament": "maluco",
       "image": "../../public/images/default-dog.webp",
       "userId": "82f9"
-    },
-    {
-      "id": "9a31",
-      "name": "Rosa",
-      "weight": "22",
-      "age": "4",
-      "race": "Perra",
-      "details": "Tremenda coya 2.0",
-      "temperament": "SI",
-      "image": "https://cdn.unotv.com/images/2025/02/perrita-maltes-celebra-antes-de-comer-mandarina-jpg-131529.jpg",
-      "userId": "82f9"
     }
   ],
   "stays": []
