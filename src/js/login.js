@@ -1,8 +1,11 @@
 import { redirectTo } from "./router.js";
 import { sleep } from "./sleep.js";
 import { Alert } from "./alerts.js";
+import { loginGuard } from "./guards.js";
 
 export function loginSetup() {
+  loginGuard();
+
   //DOM References
   const loginForm = document.getElementById("login-form");
   const usernameInput = document.getElementById("login-username");

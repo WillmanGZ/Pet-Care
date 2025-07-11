@@ -1,6 +1,9 @@
+import { dashboardGuard } from "./guards";
 import { redirectTo } from "./router";
 
 export function dashboardSetup() {
+  dashboardGuard();
+
   //Take DOM References
   const newPetModal = document.getElementById("pet-form-modal");
   const addPetBtn = document.getElementById("add-pet-btn");
