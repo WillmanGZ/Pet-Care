@@ -30,6 +30,12 @@ export function registerSetup() {
     const password = passwordInput.value;
     const phone = phoneInput.value.trim();
 
+    if (
+      !validateForm(name, username, email, identity, address, password, phone)
+    ) {
+      return;
+    }
+
     //Make new user
     const newUser = {
       name: name,
@@ -64,4 +70,63 @@ export function registerSetup() {
     event.preventDefault();
     redirectTo("/login");
   });
+}
+
+function validateForm(
+  name,
+  username,
+  email,
+  identity,
+  address,
+  password,
+  phone
+) {
+  // Regular expression for email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^\+?[\d\s\-\(\)]{7,15}$/;
+
+  // Check if any required field is empty
+  if (
+    name === "" ||
+    username === "" ||
+    email === "" ||
+    identity === "" ||
+    address === "" ||
+    phone === ""
+  ) {
+    Alert.warning("Todos los campos deben ser rellenados");
+    return false;
+  }
+
+  // Check minimum length for username and password
+  if (username.length < 3) {
+    Alert.warning("El nombre de usuario debe contener al menos 3 caracteres");
+    return false;
+  }
+
+  if (password.length < 3) {
+    Alert.warning("La contraseña debe contener al menos 3 caracteres");
+    return false;
+  }
+
+  // Check for valid email format
+  if (!emailRegex.test(email)) {
+    Alert.warning("Formato incorrecto de correo electronico.");
+    return false;
+  }
+
+  // Check if identity is numeric
+  if (isNaN(identity)) {
+    Alert.warning("EL número de documento debe ser un número");
+    return false;
+  }
+
+  //Check for valid phone format
+  if (!phoneRegex.test(phone)) {
+    Alert.warning("Formato incorrecto de telefono");
+    return false;
+  }
+
+  // If all checks pass, return true
+  return true;
 }

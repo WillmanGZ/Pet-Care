@@ -23,6 +23,11 @@ export function loginSetup() {
     const username = usernameInput.value.trim().toLowerCase();
     const password = passwordInput.value;
 
+    if (!username || !password) {
+      Alert.warning("Debes rellenar ambos campos!");
+      return;
+    }
+
     //Get user info
     let response = await fetch(`${API_URL}/users?username=${username}`);
     const data = await response.json();
