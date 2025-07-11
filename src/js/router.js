@@ -1,4 +1,5 @@
 import { notFoundSetup } from "./404";
+import { dashboardSetup } from "./dashboard";
 import { homeSetup } from "./home";
 import { loginSetup } from "./login";
 import { registerSetup } from "./register";
@@ -18,7 +19,7 @@ const routes = {
   },
   "/dashboard": {
     path: "../../src/views/dashboard.html",
-    setup: null,
+    setup: dashboardSetup,
   },
   "/notFound": {
     path: "../../src/views/404.html",
