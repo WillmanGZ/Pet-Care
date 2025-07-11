@@ -12,6 +12,7 @@ export function dashboardSetup() {
 
   //Make functions global
   window.deletePet = deletePet;
+  window.editPet = editPet;
 
   //Take DOM References
   const newPetModal = document.getElementById("pet-form-modal");
@@ -152,7 +153,7 @@ async function renderPets() {
         <p><strong>Edad:</strong> ${pet.age} años</p>
 
         <div class="card-buttons">
-          <button class="edit-btn")>Editar</button>
+          <button class="edit-btn" onclick="editPet('${pet.id}')")>Editar</button>
           <button class="delete-btn" onclick="deletePet('${pet.id}')">Eliminar</button>
         </div>
       </div>`;
@@ -180,6 +181,93 @@ async function deletePet(petId) {
     } else {
       Alert.error(`Error: ${request.status}, por favor intenta más tarde.`);
     }
+  }
+}
+
+async function editPet(petId) {
+  let request = await fetch(`${API_URL}/pets/${petId}`);
+  const pet = await request.json();
+
+  showEditPetModal(pet);
+}
+
+async function showEditPetModal(pet) {
+  const { value: formValues } = await Swal.fire({
+    title: "Editar Mascota",
+    html: `
+      <input id="swal-input-name" class="swal2-input" placeholder="Nombre de la mascota" value="${
+        pet.name
+      }">
+      <input id="swal-input-weight" type="number" class="swal2-input" placeholder="Peso de la mascota (KG)" value="${
+        pet.weight
+      }">
+      <input id="swal-input-age" type="number" class="swal2-input" placeholder="Edad (años)" min="0" value="${
+        pet.age
+      }">
+      <input id="swal-input-race" class="swal2-input" placeholder="Raza de la mascota" value="${
+        pet.race
+      }">
+      <input id="swal-input-details" class="swal2-input" placeholder="Anotaciones adicionales (opcional)" value="${
+        pet.details || ""
+      }">
+      <input id="swal-input-temperament" class="swal2-input" placeholder="Temperamento de la mascota" value="${
+        pet.temperament
+      }">
+      <input id="swal-input-image" class="swal2-input" placeholder="URL de imagen (opcional)" value="${
+        pet.image || ""
+      }">
+    `,
+    focusConfirm: false,
+    showCancelButton: true,
+    confirmButtonText: "Guardar Cambios",
+    cancelButtonText: "Cancelar",
+    preConfirm: () => {
+      return [
+        document.getElementById("swal-input-name").value,
+        document.getElementById("swal-input-weight").value,
+        document.getElementById("swal-input-age").value,
+        document.getElementById("swal-input-race").value,
+        document.getElementById("swal-input-details").value,
+        document.getElementById("swal-input-temperament").value,
+        document.getElementById("swal-input-image").value,
+      ];
+    },
+  });
+
+  if (formValues) {
+    const [name, weight, age, race, details, temperament, image] = formValues;
+    if (!arePetDetailsValid(name, weight, age, race, temperament, image))
+      return;
+    const userId = JSON.parse(localStorage.getItem("currentUser")).id;
+    const updatedPetData = {
+      id: pet.id,
+      name: name,
+      weight: weight,
+      age: age,
+      race: race,
+      details: details,
+      temperament: temperament,
+      image: image || "../../public/images/default-dog.webp",
+      userId: userId,
+    };
+    await saveEditedPet(updatedPetData);
+  }
+}
+
+async function saveEditedPet(petData) {
+  const request = await fetch(`${API_URL}/pets/${petData.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(petData),
+  });
+
+  if (request.ok) {
+    Alert.success("Mascota editada exitosamente!");
+    renderPets();
+  } else {
+    Alert.error(`Error: ${request.status}, por favor intente mas tarde`);
   }
 }
 
