@@ -20,6 +20,17 @@
       "email": "admin@riwi.io",
       "password": "1234",
       "roleId": "1"
+    },
+    {
+      "id": "e32a",
+      "name": "Jaiver",
+      "username": "donleñas",
+      "identity": "123123",
+      "phone": "3103338019",
+      "address": "pues si marce",
+      "email": "marce@gmail.com",
+      "password": "1234",
+      "roleId": "2"
     }
   ],
   "pets": [
@@ -33,6 +44,17 @@
       "temperament": "maluco",
       "image": "../../public/images/default-dog.webp",
       "userId": "82f9"
+    },
+    {
+      "id": "8218",
+      "name": "Rosa",
+      "weight": "12",
+      "age": "22",
+      "race": "Perra",
+      "details": "Tremenda coya 2.0",
+      "temperament": "SI",
+      "image": "https://cdn.unotv.com/images/2025/02/perrita-maltes-celebra-antes-de-comer-mandarina-jpg-131529.jpg",
+      "userId": "e32a"
     }
   ],
   "stays": []

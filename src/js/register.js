@@ -46,7 +46,7 @@ export function registerSetup() {
       address: address,
       email: email,
       password: password,
-      roleId: "1",
+      roleId: "2",
     };
 
     //Post new user in DB
