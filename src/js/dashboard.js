@@ -230,15 +230,15 @@ async function showEditPetModal(pet) {
         document.getElementById("swal-input-details").value,
         document.getElementById("swal-input-temperament").value,
         document.getElementById("swal-input-image").value,
+        pet.userId,
       ];
     },
   });
 
   if (formValues) {
-    const [name, weight, age, race, details, temperament, image] = formValues;
+    const [name, weight, age, race, details, temperament, image, userId] = formValues;
     if (!arePetDetailsValid(name, weight, age, race, temperament, image))
       return;
-    const userId = JSON.parse(localStorage.getItem("currentUser")).id;
     const updatedPetData = {
       id: pet.id,
       name: name,
