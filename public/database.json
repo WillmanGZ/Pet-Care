@@ -1,9 +1,23 @@
 {
-  "roles": [],
+  "roles": [
+    {
+      "0": "customer"
+    },
+    {
+      "1": "worker"
+    }
+  ],
   "users": [
     {
-      "username": "nani",
-      "password": "2020"
+      "id": "82f9",
+      "name": "Adminitrator",
+      "username": "admin",
+      "identity": "123456789",
+      "phone": "3004265582",
+      "address": "Calle 80 # 43-11",
+      "email": "admin@riwi.io",
+      "password": "1234",
+      "roleId": "1"
     }
   ],
   "pets": [],

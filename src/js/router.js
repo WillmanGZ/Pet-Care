@@ -1,5 +1,6 @@
 import { homeSetup } from "./home";
 import { loginSetup } from "./login";
+import { registerSetup } from "./register";
 
 const routes = {
   "/": {
@@ -8,7 +9,7 @@ const routes = {
   },
   "/register": {
     path: "../../src/views/register.html",
-    setup: null,
+    setup: registerSetup,
   },
   "/login": {
     path: "../../src/views/login.html",
