@@ -12,6 +12,7 @@ export function registerSetup() {
   const emailInput = document.getElementById("register-email");
   const phoneInput = document.getElementById("register-phone");
   const passwordInput = document.getElementById("register-password");
+  const goLoginP = document.getElementById("register-go-login");
 
   //API URL
   const API_URL = "http://localhost:3000";
@@ -57,5 +58,10 @@ export function registerSetup() {
         `No se pudo registrar el usuario, error ${response.status}. Vuelva a intentarlo mas tarde`
       );
     }
+  });
+
+  goLoginP.addEventListener("click", (event) => {
+    event.preventDefault();
+    redirectTo("/login");
   });
 }

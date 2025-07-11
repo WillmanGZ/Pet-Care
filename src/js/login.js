@@ -7,6 +7,7 @@ export function loginSetup() {
   const loginForm = document.getElementById("login-form");
   const usernameInput = document.getElementById("login-username");
   const passwordInput = document.getElementById("login-password");
+  const goRegisterP = document.getElementById("login-go-register");
 
   //API URL
   const API_URL = "http://localhost:3000";
@@ -35,5 +36,10 @@ export function loginSetup() {
       await sleep(2000);
       redirectTo("/dashboard");
     }
+  });
+
+  goRegisterP.addEventListener("click", (event) => {
+    event.preventDefault();
+    redirectTo("/register");
   });
 }
