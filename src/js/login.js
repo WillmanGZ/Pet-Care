@@ -11,6 +11,7 @@ export function loginSetup() {
   const usernameInput = document.getElementById("login-username");
   const passwordInput = document.getElementById("login-password");
   const goRegisterP = document.getElementById("login-go-register");
+  const goBackP = document.getElementById("login-go-back");
 
   //API URL
   const API_URL = "http://localhost:3000";
@@ -50,6 +51,11 @@ export function loginSetup() {
     event.preventDefault();
     redirectTo("/register");
   });
+
+  goBackP.addEventListener("click", (event) => {
+    event.preventDefault();
+    redirectTo("/")
+  })
 }
 
 export function logout() {
