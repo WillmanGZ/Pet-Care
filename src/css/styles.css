@@ -360,6 +360,13 @@ button {
 #add-pet-btn:hover {
   background-color: #28a745;
 }
+#go-home-btn {
+  background-color: #6c63ff;
+  color: white;
+}
+#go-home-btn:hover {
+  background-color: #5249d1;
+}
 
 #logout-btn {
   background-color: #ff6b6b;
