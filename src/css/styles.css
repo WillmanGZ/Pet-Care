@@ -9,23 +9,39 @@
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   background-color: #f8f9fa;
   color: #333;
 }
 
-/* .hidden {
+.hidden {
   display: none !important;
-} */
+}
 
-input, button {
+input,
+button {
   font-family: inherit;
 }
 
 /* Animaciones */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn2 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* =====================================================
@@ -37,6 +53,7 @@ input, button {
   flex-direction: column;
   min-height: 100vh;
   background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+  animation: fadeIn2 0.6s ease-out;
 }
 
 .landing-header {
@@ -232,7 +249,7 @@ input, button {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(to right, #d4fc79, #96e6a1);
 }
 
@@ -243,6 +260,7 @@ input, button {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   max-width: 420px;
   width: 100%;
+  height: auto;
   text-align: center;
   animation: fadeIn 0.6s ease-out;
 }
@@ -308,7 +326,7 @@ input, button {
   padding: 2rem;
   background: linear-gradient(to right, #fdfbfb, #ebedee);
   min-height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .dashboard-header {
@@ -341,6 +359,31 @@ input, button {
 
 #add-pet-btn:hover {
   background-color: #28a745;
+}
+
+#add-user-btn {
+  background-color: #6c63ff;
+  color: white;
+}
+
+#add-user-btn:hover {
+  background-color: #5249d1;
+}
+
+#add-stay-btn {
+  background-color: #e5673c;
+  color: white;
+}
+#add-stay-btn:hover {
+  background-color: #d45a2f;
+}
+
+#go-home-btn {
+  background-color: #1d3557;
+  color: white;
+}
+#go-home-btn:hover {
+  background-color: #457b9d;
 }
 
 #logout-btn {
@@ -500,4 +543,72 @@ input, button {
 
 #cancel-pet-form:hover {
   background-color: #b3b3b3;
+}
+
+/*404*/
+.container-404 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  text-align: center;
+}
+
+.container-404 .container {
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+}
+
+.container-404 .container h1 {
+  font-size: 5rem;
+  margin: 0;
+  color: #e63946;
+  animation: pulse 1s infinite;
+}
+
+.container-404 .container h2 {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  color: #555;
+}
+
+.container-404 .container p {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 2rem;
+}
+
+.container-404 .container a {
+  display: inline-block;
+  background-color: #1d3557;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.container-404 .container a:hover {
+  background-color: #457b9d;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
