@@ -17,6 +17,8 @@ export function dashboardSetup() {
   //Take DOM References
   const newPetModal = document.getElementById("pet-form-modal");
   const addPetBtn = document.getElementById("add-pet-btn");
+  const addUserBtn = document.getElementById("add-user-btn");
+  const addStayBtn = document.getElementById("add-stay-btn");
   const goHomeBtn = document.getElementById("go-home-btn");
   const logOutBtn = document.getElementById("logout-btn");
   const cancelPetBtn = document.getElementById("cancel-pet-form");
@@ -30,6 +32,11 @@ export function dashboardSetup() {
   const petDetailsInput = document.getElementById("pet-details");
   const petTemperamentInput = document.getElementById("pet-temperament");
   const petImageInput = document.getElementById("pet-image");
+
+  if (!isAdmin()) {
+    addUserBtn.classList.toggle("hidden");
+    addStayBtn.classList.toggle("hidden");
+  }
 
   //Add listeners
   addPetBtn.addEventListener("click", () => {
@@ -236,7 +243,8 @@ async function showEditPetModal(pet) {
   });
 
   if (formValues) {
-    const [name, weight, age, race, details, temperament, image, userId] = formValues;
+    const [name, weight, age, race, details, temperament, image, userId] =
+      formValues;
     if (!arePetDetailsValid(name, weight, age, race, temperament, image))
       return;
     const updatedPetData = {

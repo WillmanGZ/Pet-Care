@@ -360,12 +360,30 @@ button {
 #add-pet-btn:hover {
   background-color: #28a745;
 }
-#go-home-btn {
+
+#add-user-btn {
   background-color: #6c63ff;
   color: white;
 }
-#go-home-btn:hover {
+
+#add-user-btn:hover {
   background-color: #5249d1;
+}
+
+#add-stay-btn {
+  background-color: #e5673c;
+  color: white;
+}
+#add-stay-btn:hover {
+  background-color: #d45a2f;
+}
+
+#go-home-btn {
+  background-color: #1d3557;
+  color: white;
+}
+#go-home-btn:hover {
+  background-color: #457b9d;
 }
 
 #logout-btn {
