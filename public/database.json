@@ -55,6 +55,17 @@
       "temperament": "SI",
       "image": "https://cdn.unotv.com/images/2025/02/perrita-maltes-celebra-antes-de-comer-mandarina-jpg-131529.jpg",
       "userId": "e32a"
+    },
+    {
+      "id": "0196",
+      "name": "Sofia",
+      "weight": "22",
+      "age": "3",
+      "race": "Sapa",
+      "details": "Tremenda coya 3.0",
+      "temperament": "No",
+      "image": "../../public/images/default-dog.webp",
+      "userId": "e32a"
     }
   ],
   "stays": []

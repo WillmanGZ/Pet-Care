@@ -55,6 +55,18 @@ export function dashboardSetup() {
     logout();
   });
 
+  addStayBtn.addEventListener("click", () => {
+    Alert.info(
+      "En este instante esta funcionalidad no está disponible, agradecemos tu comprension!"
+    );
+  });
+
+   addUserBtn.addEventListener("click", () => {
+    Alert.info(
+      "En este instante esta funcionalidad no está disponible, agradecemos tu comprension!"
+    );
+  });
+
   //Modify Pets
   petForm.addEventListener("submit", async (event) => {
     event.preventDefault();
